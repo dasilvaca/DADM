@@ -1,0 +1,11 @@
+--2023-08-19 16:58:41--  https://cs.harding.edu/fmccown/android/TicTacToeConsole.java
+Resolving cs.harding.edu (cs.harding.edu)... 192.133.129.174
+Connecting to cs.harding.edu (cs.harding.edu)|192.133.129.174|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5776 (5.6K) [text/plain]
+Saving to: ‘TicTacToeConsole.java.1’
+
+     0K .....                                                 100% 78.9M=0s
+
+2023-08-19 16:58:41 (78.9 MB/s) - ‘TicTacToeConsole.java.1’ saved [5776/5776]
+
