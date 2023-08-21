@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class TicTacToeGame {
 
-private static class Coordinate{
+public static class Coordinate{
     public int i;
     public int j;
     Coordinate(int x, int y){
@@ -29,9 +29,11 @@ private static class Coordinate{
     }
 
 
+
+
     private final Symbol[][] mBoard = new Symbol[3][3]; //! I made it final, but I suspect it is not
-    private static final int ROWS = 3;
-    private static final int COLUMNS = 3;
+    public static final int ROWS = 3;
+    public static final int COLUMNS = 3;
 
     public static final Symbol HUMAN_PLAYER = Symbol.X;
     public static final Symbol COMPUTER_PLAYER = Symbol.O;
@@ -78,6 +80,9 @@ private static class Coordinate{
                     if(checkForWinner() == 3){
                         return possibleMove;
                     }
+
+                        setMove(Symbol.OPEN_SPOT, possibleMove);
+
                 }
             }
         }
@@ -92,6 +97,8 @@ private static class Coordinate{
                         setMove(COMPUTER_PLAYER, possibleMove);
                         return possibleMove;
                     }
+
+                        setMove(Symbol.OPEN_SPOT, possibleMove);
                 }
             }
         }
@@ -135,24 +142,43 @@ private static class Coordinate{
             }
         }
         // Checks for a winner on diagonals
+//        Symbol mainDiagonalSymbol = mBoard[0][0];
+//        Symbol secondaryDiagonalSymbol = mBoard[0][ROWS - 1];
+//        // We say that, since every Diagonal starts with a non empty cell,
+//        // The symbol on it is a winner until the opposite is demonstrated
+//        boolean mainDiagonalWinner = !(mainDiagonalSymbol.equals(Symbol.OPEN_SPOT));
+//        boolean secondaryDiagonalWinner = !(secondaryDiagonalSymbol.equals(Symbol.OPEN_SPOT));
+//        for(int i = 0; i < ROWS && (mainDiagonalWinner || secondaryDiagonalWinner); i++){
+//            for(int j = 0; j < COLUMNS; j++){
+//                if(i == j && mainDiagonalWinner) {
+//                    if(!(mBoard[i][j].equals(mainDiagonalSymbol))) mainDiagonalWinner = false;
+//                }
+//                else if(i == ((ROWS - 1) - j) && secondaryDiagonalWinner){
+//                    if(!(mBoard[i][j].equals(secondaryDiagonalSymbol))) secondaryDiagonalWinner = false;
+//                }
+//            }
+//        }
+
         Symbol mainDiagonalSymbol = mBoard[0][0];
         Symbol secondaryDiagonalSymbol = mBoard[0][ROWS - 1];
-        // We say that, since every Diagonal starts with a non empty cell,
-        // The symbol on it is a winner until the opposite is demonstrated
-        boolean mainDiagonalWinner = !(mainDiagonalSymbol.equals(Symbol.OPEN_SPOT));
-        boolean secondaryDiagonalWinner = !(secondaryDiagonalSymbol.equals(Symbol.OPEN_SPOT));
-        for(int i = 0; i < ROWS && (mainDiagonalWinner || secondaryDiagonalWinner); i++){
-            for(int j = 0; j < COLUMNS; j++){
-                if(i == j && mainDiagonalWinner) {
-                    if(!(mBoard[i][j].equals(mainDiagonalSymbol))) mainDiagonalWinner = false;
-                }
-                else if(i == ((ROWS - 1) - j) && secondaryDiagonalWinner){
-                    if(!(mBoard[i][j].equals(secondaryDiagonalSymbol))) secondaryDiagonalWinner = false;
-                }
-            }
+
+        if ((!mainDiagonalSymbol.equals(Symbol.OPEN_SPOT)) &&
+                mBoard[0][0].equals(mBoard[1][1]) &&
+                mBoard[1][1].equals(mBoard[2][2])
+        ){
+            return mainDiagonalSymbol.equals(Symbol.X) ? 2:3;
         }
-        if (mainDiagonalWinner) return mainDiagonalSymbol.equals(Symbol.X) ? 2:3;
-        if (secondaryDiagonalWinner) return secondaryDiagonalSymbol.equals(Symbol.X) ? 2:3;
+        if((!secondaryDiagonalSymbol.equals(Symbol.OPEN_SPOT)) &&
+        mBoard[0][2].equals(mBoard[1][1]) &&
+                mBoard[1][1].equals(mBoard[2][0])
+        ){
+            return secondaryDiagonalSymbol.equals(Symbol.X) ? 2:3;
+        }
+
+
+//        if (mainDiagonalWinner) return mainDiagonalSymbol.equals(Symbol.X) ? 2:3;
+//        if (secondaryDiagonalWinner) return secondaryDiagonalSymbol.equals(Symbol.X) ? 2:3;
+
 
         // Check for a tie
         for(int i = 0; i < ROWS; i++){

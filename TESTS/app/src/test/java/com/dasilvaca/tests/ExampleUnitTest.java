@@ -1,4 +1,4 @@
-package com.dasilvaca.tictactoegame;
+package com.dasilvaca.tests;
 
 import org.junit.Test;
 
@@ -15,4 +15,3 @@ public class ExampleUnitTest {
         assertEquals(4, 2 + 2);
     }
 }
-
