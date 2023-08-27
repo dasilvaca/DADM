@@ -5,25 +5,22 @@ using namespace std;
 class Solution {
  public:
   string convert(string s, int numRows) {
-    vector<vector<char>> zigzag = vector(numRows, vector<char>());
+    vector<string> zigzag(numRows, "");
     string zigzag_result = "";
     bool down = 1;
 
     for (int i = 0, k = 0; i < s.size(); i++) {
-      zigzag[k % numRows].push_back(s[i]);
+      zigzag[k % numRows] += s[i];
       if (down)
         k++;
       else
         k--;
-      if (!(k % numRows)) {
+      if (k == 0 || k == numRows -1) {
         down = !down;
-        if (numRows > 2) k += (down ? 0 : -2);
       }
     }
     for (int i = 0; i < numRows; i++) {
-      for (char c : zigzag[i]) {
-        zigzag_result += c;
-      }
+      zigzag_result += zigzag[i];
     }
 
     return zigzag_result;
@@ -33,8 +30,8 @@ class Solution {
 int main() {
   vector<int> a = {3, 4};
   vector<int> b = {};
-  string s = "ABCD";
-  int n = 2;
+  string s = "PAYPALISHIRING";
+  int n = 4;
 
   cout << Solution().convert(s,n) << '\n';
 }
