@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">TicTacToeGame</string>
+    <string name="first_human">You go first.</string>
+    <string name="turn_human">Your turn.</string>
+    <string name="turn_computer">Android\'s turn.</string>
+    <string name="result_tie">It\'s a tie.</string>
+    <string name="result_human_wins">You won!</string>
+    <string name="result_computer_wins">Android won!</string>
+    <string name="dialog_start_game">Are you sure you want to start a new game?</string>
+    <string name="dialog_end_game">Are you sure you want to end the whole game?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="start">Start</string>
+    <string name="started_game">New game has started</string>
+    <string name="difficulty_set">Difficult has been set to: </string>
+    <string name="cancel">Cancel</string>
+    <string name="bot_won">Android won this time D: Better luck next time!</string>
+    <string name="user_won">Congratulations! You won!</string>
+    <string name="game_tie">It\'s a tie!</string>
+    <string name="users_turn">Now is your turn to play!</string>
+    <string name="bots_turn">Now is Android Turn to play!</string>
+    <string name="new_game_dialogue">You go first</string>
+    <string name="selector_game_difficulty">Set the AI difficulty mode: </string>
+    <string-array name="difficulty_options">
+        <item>Easy</item>
+        <item>Harder</item>
+        <item>Expert</item>
+    </string-array>
+</resources>
