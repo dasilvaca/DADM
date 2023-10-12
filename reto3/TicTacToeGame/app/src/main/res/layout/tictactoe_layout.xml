@@ -6,8 +6,8 @@
 
     <com.dasilvaca.tictactoegame.BoardView
         android:id="@+id/board"
-        android:layout_width="match_parent"
-        android:layout_height="388dp"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
         android:layout_marginTop="5dp" />
 
     <TextView
@@ -25,4 +25,57 @@
         android:textSize="40sp"
         android:text="New Game"
         android:id="@+id/newGame"/>
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+        <TableRow>
+            <TextView
+                android:text="Android_User: "
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:gravity="left"
+
+                />
+            <TextView
+                android:text="Android_Score"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:gravity="right"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Human_User:"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:gravity="left"
+
+                />
+
+            <TextView
+                android:text="Human_Score"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:gravity="right"
+                />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:text="Ties:"
+                android:layout_gravity="left"
+                android:layout_weight="1"
+                android:gravity="left"
+
+                />
+
+            <TextView
+                android:text="Number_of_Ties"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:gravity="right"
+                />
+        </TableRow>
+    </TableLayout>
 </LinearLayout>

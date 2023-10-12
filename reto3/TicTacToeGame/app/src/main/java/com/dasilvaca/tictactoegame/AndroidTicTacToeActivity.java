@@ -32,8 +32,9 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
     private TextView mInfoTextView;
 
     // private final String[] mDifficulties = getResources().getStringArray(R.array.difficulty_options);
-
     private BoardView mBoardView;
+
+    private int mHumanWins, mComputerWins, mTies;
 
 
     @Override
@@ -44,6 +45,9 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
         mBoardView = (BoardView) findViewById(R.id.board);
         mBoardView.setOnTouchListener(mTouchListener);
         mBoardView.setGame(mGame);
+        mComputerWins = mGame.androidScore;
+        mHumanWins = mGame.humanScore;
+        mTies = mGame.ties;
 
         mInfoTextView = findViewById(R.id.information);
 
@@ -125,7 +129,10 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
             int winner = mGame.checkForWinner();
             if (winner == 0 && setMove(TicTacToeGame.HUMAN_PLAYER, pos)) {
                 System.out.println("+++++++++++++++++++++++++++++++");
-                mGame.setMove(TicTacToeGame.COMPUTER_PLAYER, mGame.getComputerMove());
+                winner = mGame.checkForWinner();
+                if (winner == 0) {
+                    mGame.setMove(TicTacToeGame.COMPUTER_PLAYER, mGame.getComputerMove());
+                }
                 winner = mGame.checkForWinner();
             }
 
@@ -201,6 +208,17 @@ public class AndroidTicTacToeActivity extends AppCompatActivity {
         return builder.create();
     }
 
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putCharArray("board", mGame.getBoardState());
+        //outState.putBoolean("mGameOver", mGameOver);
+        outState.putInt("mHumanWins", Integer.valueOf(mHumanWins));
+        outState.putInt("mComputerWins", Integer.valueOf(mComputerWins));
+        outState.putInt("mTies", Integer.valueOf(mTies));
+        outState.putCharSequence("info", mInfoTextView.getText());
+        //outState.putChar("mGoFirst", mGoFirst);
+    }
 
 }
 
